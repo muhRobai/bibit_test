@@ -1,0 +1,30 @@
+/**
+  customer is a service which holds the functionalites of handling the customers who are registering the application
+*/
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/bibit/microservice/proto";
+
+message ListMovieRequest {
+    string movie = 1;
+    string page = 2;
+}
+
+message MovieItem {
+    string title = 1;
+    string year = 2;
+    string movie_id = 3;
+    string type = 4;
+    string movie_url = 5;
+}
+
+message MovieList {
+    repeated MovieItem list = 1;
+    string page = 2;
+}
+
+service MovieHandler {
+    rpc GetListMovie(ListMovieRequest) returns (MovieList);
+}
